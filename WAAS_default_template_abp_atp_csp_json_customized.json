@@ -1,0 +1,1004 @@
+{
+  "endpoints": {
+    "ports": [
+      {
+        "protocol": "HTTPS",
+        "port": 443,
+        "waf_container_exposed_port": null
+      },
+      {
+        "protocol": "Redirect Service",
+        "port": 80,
+        "waf_container_exposed_port": null,
+        "is_permanent_redirect": false
+      }
+    ],
+    "domains": [
+      "www.example.com"
+    ],
+    "deployment": {
+      "primary": "centralus",
+      "secondary": "southcentralus",
+      "is_auto_region": true,
+      "third_location": null,
+      "redirect_dc_traffic_to_azure": false,
+      "is_dedicated_ip": false
+    },
+    "advanced": {
+      "session_timeout": 60,
+      "keepalive_requests": 64,
+      "ntlm_ignore_extra_data": false,
+      "enable_vdi": false,
+      "enable_http2": false,
+      "enable_websocket": false,
+      "enable_fingerprint": true,
+      "enable_web_application_firewall": true,
+      "enable_proxy_protocol": false
+    },
+    "https": {
+      "enable_tls_1": false,
+      "enable_tls_1_1": true,
+      "enable_tls_1_2": true,
+      "enable_tls_1_3": true,
+      "enable_ssl_3": false,
+      "cipher_suite_name": "all",
+      "custom_ciphers": [],
+      "enable_pfs": false
+    },
+    "certificate": {
+      "use_automatic": true,
+      "ssl_certificate": null,
+      "encrypted_ssl_private_key": null,
+      "aes_key_encrypted": null,
+      "aes_key_customer_container": null,
+      "ssl_private_key_customer_container": null,
+      "enable_container_secret": false
+    },
+    "cname": "app94864.prod.cudawaas.com",
+    "sni_certificates": []
+  },
+  "servers": [
+    {
+      "name": "Default",
+      "protocol": "HTTPS",
+      "host": "SAAS-LoadBalancer-Live-1494793230.us-east-1.elb.amazonaws.com",
+      "port": 443,
+      "weight": 1,
+      "is_backup": false,
+      "mode": "In Service",
+      "health": "Up",
+      "source_ip_to_connect": "",
+      "client_impersonation": false,
+      "enable_container_secret": false,
+      "testing_backend_connectivity": false,
+      "backend_test_result": {},
+      "viewed_backend_result": true,
+      "last_test_time": "2023-07-20T06:01:41.176511Z",
+      "ssl": {
+        "protocol_ssl_3_0_enabled": false,
+        "protocol_tls_1_0_enabled": false,
+        "protocol_tls_1_1_enabled": false,
+        "protocol_tls_1_2_enabled": true,
+        "protocol_tls_1_3_enabled": false,
+        "validate_ssl_certificate": false,
+        "ssl_compatibility_mode": false,
+        "enable_http2": false,
+        "enable_sni": false,
+        "ssl_certificate": null,
+        "ssl_private_key": null,
+        "aes_key_encrypted": null,
+        "ssl_private_key_customer_container": null,
+        "aes_key_customer_container": null
+      },
+      "health_checks": {
+        "inband_max_http_errors": 0,
+        "inband_max_refused": 10,
+        "inband_max_timeout_failures": 10,
+        "inband_max_other_failures": 10,
+        "enable_oob_health_checks": false,
+        "oob_health_check_interval": 10,
+        "healthcheck_http_request_url": "/",
+        "healthcheck_method": "GET",
+        "healthcheck_additional_headers": "",
+        "healthcheck_status_code": 200,
+        "healthcheck_match_content_string": "",
+        "healthcheck_domain": ""
+      },
+      "advanced": {
+        "advanced_timing_max_connections": 10000,
+        "advanced_timing_max_requests": 1000,
+        "advanced_timing_max_keeipalive_requests": 0,
+        "advanced_timing_max_establishing_connections": 100,
+        "advanced_timing_max_spare_connections": 0,
+        "advanced_timing_timeout": 300000,
+        "connection_pooling": false,
+        "connection_pooling_keepalive_timeout": 900000
+      }
+    }
+  ],
+  "allowed_ips": [
+    {
+      "ip": "34.228.125.58",
+      "netmask": "255.255.255.255",
+      "note": "Barracuda health checker"
+    },
+    {
+      "ip": "34.205.44.115",
+      "netmask": "255.255.255.255",
+      "note": "Barracuda health checker"
+    }
+  ],
+  "blocked_bots": {
+    "uncategorized": true,
+    "site_monitor": false,
+    "link_checker": false,
+    "vulnerability_scanner": false,
+    "speed_tester": false,
+    "tool": false,
+    "unrecognized": false,
+    "search_engine_bot": false,
+    "screenshot_creator": false,
+    "web_scraper": false,
+    "virus_scanner": false,
+    "feed_fetcher": false,
+    "marketing": false
+  },
+  "client_evaluation": {
+    "rules": [
+      {
+        "name": "default",
+        "is_enabled": true,
+        "enforce_captcha": "suspicious_clients_only",
+        "num_captcha_tries": 5,
+        "num_unanswered_captcha": 100,
+        "expiry_time": 300,
+        "extended_match_sequence": 1,
+        "comments": "",
+        "extended_match": "*",
+        "url": "/*",
+        "host": "*",
+        "mouse_check": true
+      }
+    ],
+    "captcha_type": "hCAPTCHA",
+    "is_enabled": true,
+    "captcha_site_secret": "",
+    "captcha_site_key": ""
+  },
+  "data_theft_protection": {
+    "custom_identity_theft_types": [],
+    "elements": [],
+    "enabled": true
+  },
+  "ip_reputation": {
+    "exceptions": [],
+    "enabled": true,
+    "blocked_countries": [],
+    "block_barracuda_reputation_blacklist": false,
+    "block_tor_nodes": true,
+    "block_anonymous_proxies": true,
+    "block_satellite_providers": false,
+    "block_unclassified_ips": false,
+    "block_ssh_attack_sources": false,
+    "block_datacenter_ip": false,
+    "block_public_proxy": true,
+    "block_http_attack_sources": false,
+    "block_fake_crawler": false,
+    "geoip_enable_logging": false,
+    "custom_blacklisted_ip_status": false,
+    "check_registered_country": false,
+    "apply_policy_at": "Network Layer",
+    "asn_action": false,
+    "blocked_asn_group": null
+  },
+  "json_security": {
+    "enabled": true,
+    "json_policies": [
+      {
+        "has_profiles": true,
+        "name": "default-policy",
+        "max_keys": 1000,
+        "max_key_length": 80,
+        "max_value_length": 2048,
+        "max_number_value": "9999999999999999999",
+        "max_object_depth": 32,
+        "max_array_elements": 48,
+        "max_siblings": 80,
+        "min_number_value": "-99999999"
+      }
+    ],
+    "enable_api_discovery": false,
+    "config_type": "Manual",
+    "last_reco_fetch_time": null
+  },
+  "parameter_protection": {
+    "enabled": true,
+    "denied_metacharacters": "%00%01%04%1b%08%5c%7f",
+    "maximum_parameter_value_length": 10000,
+    "maximum_instances": null,
+    "base64_decode_parameter_value": false,
+    "validate_parameter_name": false,
+    "allowed_file_upload_types": "all",
+    "file_upload_extensions": [
+      "GIF",
+      "JPG",
+      "PDF"
+    ],
+    "file_upload_mime_types": [
+      "application/pdf",
+      "image/gif",
+      "image/jpeg"
+    ],
+    "maximum_upload_file_size": null,
+    "ignore_parameters": [
+      "__VIEWSTATE"
+    ],
+    "exception_patterns": [],
+    "sql_injection": "normal",
+    "os_command_injection": "normal",
+    "cross_site_scripting": "normal",
+    "remote_file_inclusion": "none",
+    "ldap_injection": "normal",
+    "python_php_attacks": "normal",
+    "http_specific_injection": "normal",
+    "apache_struts_attacks": "normal",
+    "directory_traversal": "normal",
+    "custom_blocked_attack_type_groups": []
+  },
+  "referer_spam": {
+    "referrer_spam_detection": false,
+    "exception_patterns": []
+  },
+  "request_limits": {
+    "enabled": true,
+    "max_request_length": 32768,
+    "max_request_line_length": 4096,
+    "max_url_length": 4096,
+    "max_query_length": 4096,
+    "max_number_of_cookies": 80,
+    "max_cookie_name_length": 64,
+    "max_cookie_value_length": 4096,
+    "max_number_of_headers": 40,
+    "max_header_name_length": 32,
+    "max_header_value_length": 2048
+  },
+  "request_rewrite": {
+    "rules": [
+      {
+        "name": "Host_Header_for_Testing",
+        "sequence_number": 3,
+        "action": "Rewrite Header",
+        "header": "Host",
+        "rewrite_value_type": "constant",
+        "old_value": "app94864.prod.cudawaas.com",
+        "rewrite_value": "www.example.com",
+        "condition": "*",
+        "continue_processing": true,
+        "comments": "This rule allows you to access your application using its endpoint URL, without changing DNS records."
+      },
+      {
+        "name": "default-req-rewrite-rule",
+        "sequence_number": 1,
+        "action": "Insert Header",
+        "header": "X-Forwarded-For",
+        "rewrite_value_type": "request",
+        "old_value": "*",
+        "rewrite_value": "$SRC_ADDR",
+        "condition": "*",
+        "continue_processing": true,
+        "comments": null
+      },
+      {
+        "name": "remove-accept-encoding-header",
+        "sequence_number": 2,
+        "action": "Remove Header",
+        "header": "Accept-Encoding",
+        "rewrite_value_type": "request",
+        "old_value": "*",
+        "rewrite_value": "",
+        "condition": "*",
+        "continue_processing": true,
+        "comments": null
+      }
+    ],
+    "enabled": true
+  },
+  "response_body_rewrite": {
+    "rules": [],
+    "enabled": true
+  },
+  "response_cloaking": {
+    "cloak_status_code": false,
+    "status_codes_to_pass_through": [
+      404
+    ],
+    "cloak_sensitive_headers": true,
+    "headers_to_cloak": [
+      "Server",
+      "X-AspNet-Version",
+      "X-Powered-By"
+    ]
+  },
+  "response_page_component": {
+    "pages": [
+      {
+        "is_default_page": true,
+        "name": "default",
+        "status_code": "404 Not Found",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\"/>\n<title>404 - File or directory not found.</title>\n<style type=\"text/css\">\n<!--\nbody{margin:0;font-size:.7em;font-family:Verdana, Arial, Helvetica, sans-serif;background:#EEEEEE;}\nfieldset{padding:0 15px 10px 15px;} \nh1{font-size:2.4em;margin:0;color:#FFF;}\nh2{font-size:1.7em;margin:0;color:#CC0000;} \nh3{font-size:1.2em;margin:10px 0 0 0;color:#000000;} \n#header{width:96%;margin:0 0 0 0;padding:6px 2% 6px 2%;font-family:\"trebuchet MS\", Verdana, sans-serif;color:#FFF;\nbackground-color:#555555;}\n#content{margin:0 0 0 2%;position:relative;}\n.content-container{background:#FFF;width:96%;margin-top:8px;padding:10px;position:relative;}\n-->\n</style>\n</head>\n<body>\n<div id=\"header\"><h1>Server Error</h1></div>\n<div id=\"content\">\n <div class=\"content-container\"><fieldset>\n  <h2>404 - File or directory not found.</h2>\n  <h3>The resource you are looking for might have been removed, had its name changed, or is temporarily unavailable.</h3>\n </fieldset></div>\n</div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-access-denied-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n    }\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    html .success-message {\n        color: #333333;\n        font: 16px arial;\n        position: relative;\n        text-align: center;\n        padding: 15px 0 10px 0;\n    }\n    html .desc-message {\n        color: #333333;\n        font: 14px arial;\n        position: relative;\n        padding: 10px 0 24px 0;\n    }\n    html .icn-success {\n        vertical-align: bottom;\n    }\n    html .icn-message {\n        margin-left: 5px;\n        line-height: 24px;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\">\n                    <div class=\"success-message\" style=\"display: block;\">\n                        <span class=\"icn-success\">\n                            <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTAvMy8xNKPrw1UAAAIeSURBVEiJvZY7bNNQFIY/O62zRpF4mEdUyQWcqkOzszDDXgV1LSUTYmgnOkERUgfULW33WN2DGDvAbiGFNkhEgvBwEiHI0AqchJbB167j+BGqqv92H/7+e889PvdKxKiRK+SBInAHmAUyYqgL1IBdwNCa5n4UQ4oA68A6cC9uAT5VgWWtadYTDRq5whKwAaTHhLuygUda09z0d8oB+DOgfAo44puyYHjydiBWXj4FOEwP3Z3IAq7jhMWTkr/J1VcVJtRLkRQlfyNqzoZgeiFaxxeWSW0KtVImPauj7myHmij6NGplM2pOWjCRRCru+UevvTZQZm557cH3FlZxif6nLydwY4tUNuPNsWt1vt29H1zHjIyT50PqPF7l78+u1564chl1Z5vJqeuh8KODQ348eT6yS6AoNXKFN8Dt0BAEQINWB0lRRuDWQgnbrIUZvJUaucIvTv7QRBO/EuAAXTkKDtCrf8QqPhgK13/AATJy3Gicjnt9jn//SZwn4xSuUMWFKJXNoBpbKPp0HL8r41TFseBHB4dD4RrDpCbjlNyx4NZCaeRMEkx2ZcAI9l54sRqZimEHn8pmuPjyaZiBIYvLourvbZdW6H/+OgJ3FTQZtDq0SytBeFVrmvtuFi3j1HPnA6uNNb+I/e59ZCq6Jr29D1jzi14ZEbIF85zKNYDoWDsD+Jr/VjvfKxO8ncwROPgEVYG5IBwiXhWuzuLZ8g/bxQTJnkIpigAAAABJRU5ErkJggg==\" align=\"top\"/>\n                        </span>\n                        <span class=\"icn-message\">Access Denied</span>\n                    </div>\n                    <div class=\"desc-message\" style=\"display: block;\">\n                        You do not have permission to access this resource. Please sign in or contact your administrator for access to this resource.\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-captcha-response-page",
+        "status_code": "200 OK",
+        "type": "Captcha Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<html><body style=\"font-family:times;color:white;font-size:15px;\" bgcolor=\"#405F8D\"><title>Validation request</title><h3 align=\"center\">User validation required to continue..</h3><hr>Please type the text you see in the image into the text box and submit<p><img src = \"/captcha.gif\"></p><form name=\"input\" action=\"/captcha_resp\" method=\"POST\" enctype=\"application/x-www-form-urlencoded\"><input type=\"text\" name=\"captcha_resp_txt\" /><input type=\"submit\" value=\"Submit\" /></form></p></body></html><p>[ Refresh the page to generate a new image. ]</p><p>Note:<ul><li>If you get here while trying to submit a form, you may have to re-submit the form.</li><li>Access to this domain may need the browser to have javascript and cookie support enabled. </li></ul></p><hr>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-captcha-sessions-error-page",
+        "status_code": "404 Not Found",
+        "type": "Captcha Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\"> The specified URL is inaccessible at this time due to the load on the website from the same IP address. Please try after some time or from a different IP address.</div>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-captcha-tries-error-page",
+        "status_code": "404 Not Found",
+        "type": "Captcha Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\"> The specified URL is inaccessible at this time. Please try after some time.</div>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-challenge-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n            height: 100%;\n    }\n    html body {\n            background: none repeat scroll 0 0 #999999;\n            margin: 0;\n            height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n        /*color: #333333;*/\n    }\n/*    html .form-signin .form-page-content, html .form-signin .page_content {\n            position: static;\n    }\n*/\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n            background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n            cursor: text;\n            display: block;\n            font: 18px/24px helvetica neue,helvetica,arial;\n            margin: 15px 0;\n            padding: 5px 10px;\n            position: relative;\n            width: 95%;\n            z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n    <!--    <style>\n            html .form-signin-logo { background:url(/signin-logo.png) center center no-repeat !important;}\n        </style>\n    -->\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div id=\"form-page-fields\">\n                    %s\n                    <input type=\"hidden\" name=\"f_username\" id=\"username_entry\" value=\"%s\"  class=\"form-field-text\" placeholder=\"Username\" autocomplete=\"off\">\n                    <input type=\"password\" name=\"f_passwd\" id=\"password_entry\" value=\"\" class=\"form-field-password\" placeholder=\"\" autocomplete=\"off\">\n                    <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGIN\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign in\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-dual-login-failed-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n    }\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    html .message {\n        color: #DD1E31;\n        font: 12px/15px arial;\n        position: relative;\n        padding-bottom: 8px;\n    }\n    html .icn-success {\n        vertical-align: bottom;\n    }\n   html .icn-message {\n        margin-left: 5px;\n        line-height: 22px;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div class=\"message\" style=\"display: block;\">\n                        <span class=\"icn-success\">\n                            <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTAvMy8xNKPrw1UAAAJRSURBVDiNnZRLaBNhEMd/uxvjwfSVlmB9LOJiEUQhV0EQ8RKQRkvwRe1NKXoQpQFFo5haikUa8KqiBA9W9GBFKhKK5OLNxZxECOhqNU0T2gYTStPNesiD3c3aEv/HmW9+38x8842Ag9KyXwROACHgICDXXAXgM/AWeKxoas4eKzjAjgKTwH6ny0xaBqK6rsf65lKGIzAt+68BY4C4AcysV8CQoqklCzAt+6NApAWQWdO6rh/vm0sZYg0WMMM279uLd+QSCE0dAUmk+9YIm3btNFv7JUm6CCCkZb8L+AIoAO49u+l98QjJ20nh2UtyN8fBMBowX2wUTzDAWibL71PnKX/7UYcuArIIDNRhAG1nBpC8nQC0D4bouXu9mqkJBuDa6qPjwpA5yy7grAs4abbmxyaReroage2DIQDEti0NG0ApkSR/e8LekH4hLfs1wNIQezZ2lRJJ5ofDGOWy3fVLbIIB6BWyVyL8eT3TCgxgWyvzBkClWMSo6P/0i8BSk3Wdkj3BAL7YKEiOuRRE4NNGsFIiaSl/HWjKBbwBjtQt3TeuNsHmh8ONMus+TzCAnlskH71vBs6IwFOqH72ac3yK8vefVli53PRQa5kshfiUGbYCPJEeLGdWLnf0FoEAQGWpQOndLILbzUL4jvU1DYPi+w+IHg/5yLj5lwDcUzR1WgD4uv2AIEnSc2xD3oI+AocVTV0VAWr77Bzw8D9gs0BA0dRVcF6wp4EJnAbeqmLt3JiiqY3BdNhPkJb9bqrr/xhwCNhRcxUAlepkxBVNXbDH/gXF7d0DYUvrGgAAAABJRU5ErkJggg==\" align=\"top\"/>\n                        </span>\n                        <span class=\"icn-message\"><b>Error</b>: Invalid Username/Password/Passcode</span>\n                    </div>\n                    <div id=\"form-page-fields\">\n                        Please provide your username and password to access restricted applications.\n                        <input type=\"text\" name=\"f_username\" id=\"username_entry\" value=\"\"  class=\"form-field-text\" placeholder=\"Username\" autocomplete=\"off\">\n                        <input type=\"password\" name=\"f_passwd\" id=\"password_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Password\" autocomplete=\"off\">\n                        <input type=\"password\" name=\"f_passcode\" id=\"passcode_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Passcode\" autocomplete=\"off\">\n                        <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGIN\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                        <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign in\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-dual-login-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n        /*color: #333333;*/\n    }\n/*    html .form-signin .form-page-content, html .form-signin .page_content {\n        position: static;\n    }\n*/\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n    <!--    <style>\n            html .form-signin-logo { background:url(/signin-logo.png) center center no-repeat !important;}\n        </style>\n    -->\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div id=\"form-page-fields\">\n                    Please provide your username and password to access restricted applications.\n                    <input type=\"text\" name=\"f_username\" id=\"username_entry\" value=\"\"  class=\"form-field-text\" placeholder=\"Username\" autocomplete=\"off\">\n                    <input type=\"password\" name=\"f_passwd\" id=\"password_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Password\" autocomplete=\"off\">\n                    <input type=\"password\" name=\"f_passcode\" id=\"passcode_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Passcode\" autocomplete=\"off\">\n                    <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGIN\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign in\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-error-resp",
+        "status_code": "503 Service Unavailable",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\"> The requested service is temporarily unavailable. It is either overloaded or under maintenance. Please try later.</div>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-fingerprint-challenges-exceeded-page",
+        "status_code": "404 Not Found",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<html><body style=\"font-family:times;color:white;font-size:15px;\"><div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\">The specified URL cannot be found.<p align=\"center\">You should enable JavaScript and cookies to have access to this website [Id: %log-id].</p></div></body></html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-graphql-response-page",
+        "status_code": "400 Bad Request",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: application/json",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "{\"errors\":[{\"message\": \"Invalid Request\", \"Log-Id\": \"%log-id\", \"Request Time\": \"%attack-time\"}]}",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-hsts-redirect-page",
+        "status_code": "301 Moved Permanently",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold;\n                    color:#1A4369; padding:5px; margin:10px; text-align:center\">  The requested service can be accessed\n                    over HTTPS only. <br>URL to access the service would be https://%host:443%s </div>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-idp-selection-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "CConnection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405f8d;\n        background-image: -moz-linear-gradient(center top , #405f8d, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n        /*color: #333333;*/\n    }\n/*    html .form-signin .form-page-content, html .form-signin .page_content {\n            position: static;\n    }\n*/\n    html #idp-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n    <!--    <style>\n            html .form-signin-logo { background:url(/signin-logo.png) center center no-repeat !important;}\n        </style>\n    -->\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"idp-login-page\" action=\"/saml.sso/login\" method=\"GET\">\n                    <div id=\"form-page-fields\">\n                    Please select an IDP for authentication to access restricted applications.\n                    <hr>\n                    <input type=\"radio\" name=\"f_idpname\" value=\"MS Azure AD\">MS Azure AD\n                    <br>\n                    <input type=\"radio\" name=\"f_idpname\" value=\"Open IDP\">Open IDP\n                    <br>\n                    <hr>\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Submit\" name=\"f_login\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-json-response-page",
+        "status_code": "404 Not Found",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: application/json",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "{\n\"Log-Id\" : \"%log-id\",\n\"Request Time\" : \"%attack-time\",\n\"Error\" : \"The specified URL cannot be found \"\n}",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-login-failed-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n            border-top-left-radius: 10px;\n            border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n            border: 1px solid #DDDDDD;\n            border-radius: 3px 3px 3px 3px;\n    }\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    html .message {\n        color: #DD1E31;\n        font: 12px/15px arial;\n        position: relative;\n        padding-bottom: 8px;\n    }\n    html .icn-success {\n        vertical-align: bottom;\n    }\n    html .icn-message {\n        margin-left: 5px;\n        line-height: 22px;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div class=\"message\" style=\"display: block;\">\n                        <span class=\"icn-success\">\n                            <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTAvMy8xNKPrw1UAAAJRSURBVDiNnZRLaBNhEMd/uxvjwfSVlmB9LOJiEUQhV0EQ8RKQRkvwRe1NKXoQpQFFo5haikUa8KqiBA9W9GBFKhKK5OLNxZxECOhqNU0T2gYTStPNesiD3c3aEv/HmW9+38x8842Ag9KyXwROACHgICDXXAXgM/AWeKxoas4eKzjAjgKTwH6ny0xaBqK6rsf65lKGIzAt+68BY4C4AcysV8CQoqklCzAt+6NApAWQWdO6rh/vm0sZYg0WMMM279uLd+QSCE0dAUmk+9YIm3btNFv7JUm6CCCkZb8L+AIoAO49u+l98QjJ20nh2UtyN8fBMBowX2wUTzDAWibL71PnKX/7UYcuArIIDNRhAG1nBpC8nQC0D4bouXu9mqkJBuDa6qPjwpA5yy7grAs4abbmxyaReroage2DIQDEti0NG0ApkSR/e8LekH4hLfs1wNIQezZ2lRJJ5ofDGOWy3fVLbIIB6BWyVyL8eT3TCgxgWyvzBkClWMSo6P/0i8BSk3Wdkj3BAL7YKEiOuRRE4NNGsFIiaSl/HWjKBbwBjtQt3TeuNsHmh8ONMus+TzCAnlskH71vBs6IwFOqH72ac3yK8vefVli53PRQa5kshfiUGbYCPJEeLGdWLnf0FoEAQGWpQOndLILbzUL4jvU1DYPi+w+IHg/5yLj5lwDcUzR1WgD4uv2AIEnSc2xD3oI+AocVTV0VAWr77Bzw8D9gs0BA0dRVcF6wp4EJnAbeqmLt3JiiqY3BdNhPkJb9bqrr/xhwCNhRcxUAlepkxBVNXbDH/gXF7d0DYUvrGgAAAABJRU5ErkJggg==\" align=\"top\"/>\n                        </span>\n                        <span class=\"icn-message\"><b>Error</b>: Invalid Username or Password</span>\n                    </div>\n                    <div id=\"form-page-fields\">\n                    Please provide your username and password to access restricted applications.\n                    <input type=\"text\" name=\"f_username\" id=\"username_entry\" value=\"\"  class=\"form-field-text\" placeholder=\"Username\" autocomplete=\"off\">\n                    <input type=\"password\" name=\"f_passwd\" id=\"password_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Password\" autocomplete=\"off\">\n                    <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGIN\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign in\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-login-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n        /*color: #333333;*/\n    }\n\n/*    html .form-signin .form-page-content, html .form-signin .page_content {\n            position: static;\n    }\n*/\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n\n    html .form-field-align-right {\n        float: right;\n    }\n\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n    <!--    <style>\n            html .form-signin-logo { background:url(/signin-logo.png) center center no-repeat !important;}\n        </style>\n    -->\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div id=\"form-page-fields\">\n                    Please provide your username and password to access restricted applications.\n                    <input type=\"text\" name=\"f_username\" id=\"username_entry\" value=\"\"  class=\"form-field-text\" placeholder=\"Username\" autocomplete=\"off\">\n                    <input type=\"password\" name=\"f_passwd\" id=\"password_entry\" value=\"\" class=\"form-field-password\" placeholder=\"Password\" autocomplete=\"off\">\n                    <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGIN\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign in\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-login-success-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n        vertical-align: top;\n        width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n    }\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    html .success-message {\n        color: #333333;\n        font: 16px arial;\n        position: relative;\n        text-align: center;\n        line-height: 24px;\n        padding: 15px 0 10px 0;\n    }\n    html .desc-message {\n        color: #333333;\n        font: 14px arial;\n        position: relative;\n        padding: 10px 0 24px 0;\n    }\n    html .icn-success {\n        vertical-align: bottom;\n    }\n    html .icn-message {\n        margin-left: 5px;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\" action=\"/nclogin.submit\" method=\"POST\">\n                    <div class=\"success-message\" style=\"display: block;\">\n                    <span class=\"icn-success\">\n                        <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTAvMy8xNKPrw1UAAAIhSURBVEiJvZYxaFNBGMd/eTFtiRhT0CxVS7amDaXgEBVaaKYOupRGeHRzMG6RQKcKLtYlYHBLA07yeFDrZAZ1CVRQMlQEG1NEKIE+hCKktFiILg53F+t7L+nLU/xv9913v+/u+O77LkAPLZojCUAHZoEkEJVT+8AWUAVMQ7ca3RiBLuAxoABc77WBY6oAS4ZubZ8YYNEcyQKPgUGPcKU2kDN0a/W4UbPBHwAlH3DkmpJkdNQ5gdx5yQfYTXfUSQISPgZ8wN/O3dQGpgzd2lZXVPALn4nfZHR4wm4elEwCMhU/+YXfTj3i6OchxTe3aOy9s7uMa4g89w0HCIfOsJx+xuULc3Y3XUM8It9wpWarTmPvrd11VkO8UIeyqSIP514THoj8YZ9P5h3wjZ01VqoZjn4c2DFJjd/PH4DwQITl9DrT8QyXouPcS693gmRTReaTeQe8XMu7wQGip+yWROwaidiVzlgFabbqTMczrvBeCk4uRO4CQ8rw9eAL377vkohdJRQUmXt26LwjFb3AgX0NURUdi7vcKQBP39/3AgfY0hAl16Fmq+4apFzL8+rzEy9wgKoGmN1m7UHKtTwbO2te4QCmqkUv6FH7R4cnOHf6Ipu7L/uBVwzduqFq0RKiQLmq2ar3C29LpugHshPl+iGcoJzqbkFl+fj8cHNyIRICZv4SvmLoVkEN/m/LBJAOU4hG7lUVRINZtU+4/iqU/sW35RchvsT4V18mrwAAAABJRU5ErkJggg==\" align=\"top\"/>\n                    </span>\n                    <span class=\"icn-message\">You have successfully signed in.</span>\n                    </div>\n                    <div class=\"desc-message\" style=\"display: block;\">\n                    You now have access to restricted resources on this site based on your account permissions. Please remember to sign out.\n                    </div>\n                    <div id=\"form-page-fields\">\n                    <input type=\"hidden\" name=\"f_method\" id=\"method_entry\" value=\"LOGOUT\" class=\"form-field-text\" placeholder=\"Method\" autocomplete=\"off\">\n                    <input id=\"Submit\" class=\"form-field-submit form-field-align-right\" type=\"submit\" value=\"Sign out\" name=\"Submit\">\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-logout-success-page",
+        "status_code": "200 OK",
+        "type": "Access Control Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate",
+          "X-Frame-Options: SAMEORIGIN",
+          "X-Content-Type-Options: text/html"
+        ],
+        "body": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Authentication and Access Control</title>\n    <style type=\"text/css\">\n    html {\n        height: 100%;\n    }\n    html body {\n        background: none repeat scroll 0 0 #999999;\n        margin: 0;\n        height: 100%;\n    }\n    html body #form-body {\n        margin: 0 auto;\n        min-height: 100%;\n        overflow: auto;\n        position: relative;\n        background-color: #405F8D;\n        background-image: -moz-linear-gradient(center top , #405F8D, #001133);\n    }\n    html .form-signin-logo {\n        height: 35%;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 15px;\n        z-index: 103;\n    }\n    html .form-signin-outer {\n        bottom: 0;\n        left: 0;\n        position: absolute;\n        right: 0;\n        top: 35%;\n        width: 100%;\n        z-index: 103;\n    }\n    table {\n            border-collapse: collapse;\n            border-spacing: 0;\n    }\n    html .form-signin-wrapper {\n            vertical-align: top;\n            width: 100%;\n    }\n    html .form-signin {\n        background-color: #F7F7F7;\n        background-image: -moz-linear-gradient(center top , #F8F8F8, #E7E7E7);\n        border-radius: 10px 10px 10px 10px;\n        box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);\n        font: 12px helvetica neue,helvetica,arial;\n        left: 50%;\n        margin-left: -260px;\n        position: relative;\n        width: 520px;\n    }\n    html .form-page-title {\n        background-color: #D8D8DD;\n        background-image: -moz-linear-gradient(center top , #D8D8DD, #E3E3E6);\n        color: #000000;\n        font: bold 18px/20px arial !important;\n        height: 20px;\n        margin-bottom: -1px;\n        padding: 10px 15px;\n    }\n    html .form-signin h2 {\n        border-top-left-radius: 10px;\n        border-top-right-radius: 10px;\n    }\n    input[type=\"text\"], input[type=\"password\"] {\n        border: 1px solid #DDDDDD;\n        border-radius: 3px 3px 3px 3px;\n    }\n    html #form-login-page {\n        overflow: hidden;\n        padding: 15px 30px !important;\n    }\n    html .form-field-text, .form-field-password {\n        background-image: -webkit-gradient(linear,left top,left bottom,from(#f8f8f8),to(#fff));\n        background-image: -moz-linear-gradient(top,#f8f8f8,#fff);\n        cursor: text;\n        display: block;\n        font: 18px/24px helvetica neue,helvetica,arial;\n        margin: 15px 0;\n        padding: 5px 10px;\n        position: relative;\n        width: 95%;\n        z-index: 1;\n    }\n    html .form-field-submit[type=\"submit\"] {\n        background: #004e9e;\n        background: -webkit-gradient(linear, left top, left bottom, from(#0079be), to(#004e9e));\n        background: -moz-linear-gradient(top, #0079be, #004e9e);\n        border: medium none;\n        border-radius: 5px 5px 5px 5px;\n        color: #FFFFFF;\n        display: inline-block;\n        font: 18px/38px helvetica neue,helvetica,arial;\n        height: 40px;\n        opacity: 0.9;\n        padding: 0 20px;\n        margin: 0 0 10px;\n        cursor: pointer;\n        position: relative;\n        text-decoration: none;\n        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.75);\n    }\n    html .form-field-submit[type=\"submit\"]:hover, .form-field-submit:hover, .form-field-submit:focus, .form-field-submit:active {\n        opacity: 1;\n    }\n    html .form-field-align-right {\n        float: right;\n    }\n    html .form-field-submit .form-field-align-right {\n        margin: 15px 0;\n    }\n    html .success-message {\n        color: #333333;\n        font: 16px arial;\n        position: relative;\n        text-align: center;\n        padding: 15px 0 10px 0;\n    }\n    html .desc-message {\n        color: #333333;\n        font: 14px arial;\n        position: relative;\n        padding: 10px 0 24px 0;\n    }\n    html .icn-success {\n        vertical-align: bottom;\n    }\n    html .icn-message {\n        margin-left: 5px;\n        line-height: 24px;\n    }\n    </style>\n</head>\n<body>\n    <div id=\"form-body\">\n    <div id=\"form-content\">\n        <div class=\"form-signin-logo\">\n        </div>\n        <table class=\"form-signin-outer\">\n        <tr>\n            <td class=\"form-signin-wrapper\">\n            <div class=\"form-signin\">\n                <h2 class=\"form-page-title\">Authentication and Access Control</h2>\n                <div id=\"form-page-content\" class=\"form-page-content\">\n                <form id=\"form-login-page\">\n                    <div class=\"success-message\" style=\"display: block;\">\n                    <span class=\"icn-success\">\n                        <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAVdEVYdENyZWF0aW9uIFRpbWUAMTAvMy8xNKPrw1UAAAIhSURBVEiJvZYxaFNBGMd/eTFtiRhT0CxVS7amDaXgEBVaaKYOupRGeHRzMG6RQKcKLtYlYHBLA07yeFDrZAZ1CVRQMlQEG1NEKIE+hCKktFiILg53F+t7L+nLU/xv9913v+/u+O77LkAPLZojCUAHZoEkEJVT+8AWUAVMQ7ca3RiBLuAxoABc77WBY6oAS4ZubZ8YYNEcyQKPgUGPcKU2kDN0a/W4UbPBHwAlH3DkmpJkdNQ5gdx5yQfYTXfUSQISPgZ8wN/O3dQGpgzd2lZXVPALn4nfZHR4wm4elEwCMhU/+YXfTj3i6OchxTe3aOy9s7uMa4g89w0HCIfOsJx+xuULc3Y3XUM8It9wpWarTmPvrd11VkO8UIeyqSIP514THoj8YZ9P5h3wjZ01VqoZjn4c2DFJjd/PH4DwQITl9DrT8QyXouPcS693gmRTReaTeQe8XMu7wQGip+yWROwaidiVzlgFabbqTMczrvBeCk4uRO4CQ8rw9eAL377vkohdJRQUmXt26LwjFb3AgX0NURUdi7vcKQBP39/3AgfY0hAl16Fmq+4apFzL8+rzEy9wgKoGmN1m7UHKtTwbO2te4QCmqkUv6FH7R4cnOHf6Ipu7L/uBVwzduqFq0RKiQLmq2ar3C29LpugHshPl+iGcoJzqbkFl+fj8cHNyIRICZv4SvmLoVkEN/m/LBJAOU4hG7lUVRINZtU+4/iqU/sW35RchvsT4V18mrwAAAABJRU5ErkJggg==\" align=\"top\"/>\n                    </span>\n                    <span class=\"icn-message\">You have successfully signed out.</span>\n                    </div>\n                    <div class=\"desc-message\" style=\"display: block;\">\n                    Please sign in to access restricted resources on this site based on your account permissions.\n                    </div>\n                </form>\n                </div>\n            </div>\n            </td>\n        </tr>\n        </table>\n    </div>\n    </div>\n</body>\n</html>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-suspected-activity-error-page",
+        "status_code": "404 Not Found",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\"> Suspected activity on the website, the URL requested is inaccessible at this time. Please try after some time or close and relaunch the browser and try again.</div>",
+        "body_template": "Custom"
+      },
+      {
+        "is_default_page": true,
+        "name": "default-virus",
+        "status_code": "404 Not Found",
+        "type": "Error Pages",
+        "headers": [
+          "Connection: Close",
+          "Content-Type: text/html",
+          "Cache-Control: no-store, no-cache, must-revalidate"
+        ],
+        "body": "<div style=\"border: 3px solid #4991C5; font:1.5em; font-family:tahoma,calibri,arial; font-weight:bold; color:#0A4369; padding:5px; margin:10px; text-align:center\"> The file uploaded to %host%s is found to be infected with a virus. Upload aborted.</div>",
+        "body_template": "Custom"
+      }
+    ],
+    "enabled": true
+  },
+  "response_rewrite": {
+    "rules": [],
+    "enabled": true
+  },
+  "sensitive_parameters": {
+    "parameters": [
+      "token",
+      "bearer",
+      "passwd",
+      "password"
+    ]
+  },
+  "slow_client_prevention": {
+    "is_enabled": true,
+    "max_request_timeout": 600,
+    "incremental_request_timeout": 30,
+    "max_response_timeout": 600,
+    "incremental_response_timeout": 30,
+    "data_transfer_rate": 10,
+    "exception_clients": ""
+  },
+  "tarpit_profile": {
+    "inactivity_timeout": 600,
+    "backlog_requests_limit": 50,
+    "delay_interval": 10
+  },
+  "url_access_and_redirects": {
+    "url_adrs": [
+      {
+        "name": "log4j_url_protection",
+        "enabled": true,
+        "host_match": "*",
+        "url_match": "/*",
+        "extended_match": "URI rco \"\\{[ -~]+:\\/\\/[ -~]+\\}\"",
+        "priority": 999,
+        "action": "Deny and Log",
+        "deny_response": "Response Page",
+        "redirect_url": "",
+        "follow_up_action": "None",
+        "follow_up_action_time": 60,
+        "comments": "",
+        "enable_container_secret": false,
+        "response_page": null
+      }
+    ],
+    "url_adr_enabled": true
+  },
+  "url_protection": {
+    "enabled": true,
+    "allowed_methods": [
+      "GET",
+      "HEAD",
+      "POST"
+    ],
+    "allowed_content_types": [
+      "application/json",
+      "application/x-www-form-urlencoded",
+      "multipart/form-data",
+      "text/xml"
+    ],
+    "max_content_length": null,
+    "max_parameters": 120,
+    "maximum_upload_files": 5,
+    "csrf_prevention": "None",
+    "maximum_parameter_name_length": 80,
+    "allow_tilde_in_url": false,
+    "allow_slash_dot_in_url": false,
+    "exception_patterns": [],
+    "sql_injection": "normal",
+    "os_command_injection": "normal",
+    "cross_site_scripting": "normal",
+    "remote_file_inclusion": "none",
+    "ldap_injection": "normal",
+    "python_php_attacks": "normal",
+    "http_specific_injection": "normal",
+    "apache_struts_attacks": "normal",
+    "custom_blocked_attack_type_groups": []
+  },
+  "url_translation": {
+    "rules": [],
+    "is_enabled": true
+  },
+  "violation_responses": {
+    "policies": [
+      {
+        "name": "Fingerprint Challenges Exceeded(421)",
+        "category": "bot-mitigation-violations",
+        "score": 100,
+        "follow_up_action": "None",
+        "follow_up_action_time": 60,
+        "deny_response": "Send Response",
+        "action": "Protect and Log",
+        "redirect_url": "",
+        "description": 421,
+        "response_page": "default-fingerprint-challenges-exceeded-page"
+      },
+      {
+        "name": "Suspicious Client Profile Risk Threshold Breached(426)",
+        "category": "client-violations",
+        "score": 80,
+        "follow_up_action": "None",
+        "follow_up_action_time": 60,
+        "deny_response": "Send Response",
+        "action": "Protect and Log",
+        "redirect_url": "",
+        "description": 426,
+        "response_page": "default"
+      }
+    ],
+    "enabled": true,
+    "suspicious_clients_threshold": 80,
+    "bad_clients_threshold": 100,
+    "exempted_fingerprints": [],
+    "exempted_ips": []
+  },
+  "web_scraping_policy": {
+    "web_scraping_policies": [
+      {
+        "allowed_bots": [
+          {
+            "asn_group": null,
+            "name": "Baidu",
+            "user_agents": [
+              "baiduspider"
+            ],
+            "domains": [
+              "*.baidu.com",
+              "*.baidu.jp"
+            ],
+            "extended_match": "(Header User-Agent co baiduspider)",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "*.baidu.com",
+              "*.baidu.jp"
+            ]
+          },
+          {
+            "asn_group": null,
+            "name": "Barracuda",
+            "user_agents": [
+              "barracuda"
+            ],
+            "domains": [
+              "34.205.44.115",
+              "34.228.125.58"
+            ],
+            "extended_match": "(Header User-Agent co barracuda)",
+            "identifier": "IP Addresses",
+            "bot_definition": "Custom",
+            "ip_addresses": "34.205.44.115,34.228.125.58",
+            "hosts": []
+          },
+          {
+            "asn_group": null,
+            "name": "Barracuda_WAAS_AHM",
+            "user_agents": [
+              "\"WAAS AHM\""
+            ],
+            "domains": [
+              "hc.endpoints.waas.cudadps.com"
+            ],
+            "extended_match": "(Header User-Agent co \"WAAS AHM\")",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "hc.endpoints.waas.cudadps.com"
+            ]
+          },
+          {
+            "asn_group": null,
+            "name": "Google",
+            "user_agents": [
+              "googlebot",
+              "adsbot",
+              "mediapartners-google"
+            ],
+            "domains": [
+              "*.googlebot.com",
+              "*.google.com"
+            ],
+            "extended_match": "(Header User-Agent co googlebot) || (Header User-Agent co adsbot) || (Header User-Agent co mediapartners-google)",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "*.googlebot.com",
+              "*.google.com"
+            ]
+          },
+          {
+            "asn_group": null,
+            "name": "Microsoft",
+            "user_agents": [
+              "bingbot",
+              "msnbot"
+            ],
+            "domains": [
+              "*.search.msn.com"
+            ],
+            "extended_match": "(Header User-Agent co bingbot) || (Header User-Agent co msnbot)",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "*.search.msn.com"
+            ]
+          },
+          {
+            "asn_group": null,
+            "name": "Twitter",
+            "user_agents": [
+              "twitterbot"
+            ],
+            "domains": [
+              "199.59.148.209",
+              "199.59.148.210",
+              "199.59.148.211",
+              "199.16.156.124",
+              "199.16.156.125",
+              "199.16.156.126"
+            ],
+            "extended_match": "(Header User-Agent co twitterbot)",
+            "identifier": "IP Addresses",
+            "bot_definition": "Custom",
+            "ip_addresses": "199.59.148.209, 199.59.148.210, 199.59.148.211, 199.16.156.124, 199.16.156.125, 199.16.156.126",
+            "hosts": []
+          },
+          {
+            "asn_group": null,
+            "name": "Yahoo",
+            "user_agents": [
+              "slurp"
+            ],
+            "domains": [
+              "*.yahoo.net"
+            ],
+            "extended_match": "(Header User-Agent co slurp)",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "*.yahoo.net"
+            ]
+          },
+          {
+            "asn_group": null,
+            "name": "Yandex",
+            "user_agents": [
+              "yandex"
+            ],
+            "domains": [
+              "*.yandex.ru",
+              "*.yandex.net",
+              "*.yandex.com"
+            ],
+            "extended_match": "(Header User-Agent co yandex)",
+            "identifier": "Host",
+            "bot_definition": "Custom",
+            "ip_addresses": "",
+            "hosts": [
+              "*.yandex.ru",
+              "*.yandex.net",
+              "*.yandex.com"
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "name": "top_level",
+            "url": "/*",
+            "host": "*",
+            "extended_match": "*",
+            "priority": 1
+          }
+        ],
+        "name": "default",
+        "insert_hidden_links": false,
+        "insert_disallowed_urls": false,
+        "insert_js": false,
+        "insert_delay": false,
+        "delay_time": 1,
+        "detect_mouse_event": false,
+        "comments": ""
+      }
+    ],
+    "enabled": true
+  },
+  "website_profile": {
+    "app_profiles": [
+      {
+        "name": "root",
+        "host": "*",
+        "url": "/",
+        "extended_match": "*",
+        "priority": 1000,
+        "policies": {}
+      },
+      {
+        "name": "root_star",
+        "host": "*",
+        "url": "/*",
+        "extended_match": "*",
+        "priority": 1000,
+        "policies": {
+          "form_protection": {
+            "enabled": true,
+            "mode": "Active",
+            "enable_data_theft_protection": false,
+            "exception_patterns": [],
+            "enable_credential_stuffing": false,
+            "credential_protection_type": "Credential Stuffing Protection",
+            "cred_authentication_type": "HTML Form",
+            "credential_protection_username_parameter": "",
+            "credential_protection_password_parameter": "",
+            "credential_spraying_block_threshold": 5,
+            "enable_brute_force_protection": true,
+            "count_window": 30,
+            "counting_criterion": "By Client",
+            "count_auth_response_codes": false,
+            "count_auth_response_codes_identifier_type": false,
+            "count_auth_response_codes_text_to_match": "",
+            "max_allowed_accesses_per_ip": 400,
+            "max_bandwidth_per_ip": 0,
+            "max_failed_accesses_per_ip": 20,
+            "max_allowed_accesses_from_all_sources": 100,
+            "max_bandwidth_from_all_sources": 0,
+            "max_failed_accesses_from_all_sources": 100,
+            "exception_clients": "",
+            "max_allowed_accesses_per_client_fp": 500,
+            "max_bandwidth_per_client_fp": 0,
+            "max_failed_accesses_per_client_fp": 30,
+            "exception_fingerprints": [],
+            "enable_virus_scan": true,
+            "enable_batp_scan": true,
+            "parse_urls_in_scripts": true,
+            "response_charset": "NONE",
+            "comments": "",
+            "enable_client_profiling": false,
+            "webhook": "",
+            "deviation": "Medium",
+            "webhook_passphrase_type": "Not Required",
+            "webhook_passphrase_name": "",
+            "webhook_passphrase_value": ""
+          },
+          "json_profile": {
+            "profile_keys": [],
+            "status": true,
+            "mode": "Active",
+            "validate_key": true,
+            "allowed_methods": [
+              "GET",
+              "PUT",
+              "POST",
+              "PATCH",
+              "DELETE",
+              "HEAD",
+              "OPTIONS"
+            ],
+            "strict_check_method": false,
+            "ignore_keys": [],
+            "inspect_content_types": [
+              "application/json"
+            ],
+            "exempt_key_names": [],
+            "exception_patterns": [],
+            "comment": "",
+            "config_type": "Manual",
+            "recommendation_id": 0,
+            "json_policy": "default-policy"
+          }
+        }
+      }
+    ],
+    "enabled": true,
+    "strict_profile_check": false,
+    "allowed_domains": [],
+    "exclude_url_patterns": [
+      "*.jpg",
+      "*.png",
+      "*.gif",
+      "*.tiff",
+      "/images/*",
+      "*.ico",
+      "*.img",
+      "*.swf",
+      "*.jpeg",
+      "*.js",
+      "*.css"
+    ],
+    "include_url_patterns": [],
+    "mode": "Passive"
+  },
+  "log_servers": {
+    "syslog_export_servers": [],
+    "eventhub_export_log_servers": []
+  }
+}
