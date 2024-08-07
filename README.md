@@ -1,9 +1,12 @@
 # snapshot-images
 
 ## Introduction
+##Barracuda WAF-as-a-Service Templates
 The JSON templates in this repository are pre-configured for modern day web applications and API servivces. 
 
-These templates are useful when building new applications as they include optimized components and settings to allow for a smooth out-of-box experience. 
+These templates are useful when building new applications in Barracuda's WAF-as-a-Service they include optimized components and settings to allow for a smooth out-of-box experience. 
+
+To sign up for a Barracuda account and a free 30-day trial of WAF-as-a-Service, [click here](https://waas.barracudanetworks.com/).
 
 ## Introduction
 #Barracuda WAF-a-a-Service Portal (or API)
